@@ -1,0 +1,71 @@
+.color-b {
+  color: black;
+}
+
+.color-w {
+  color: white;
+}
+
+.color-g {
+  color: green;
+}
+
+.color-gray{
+  color: rgb(112, 112, 112);
+}
+
+.color-blu {
+  color: rgb(39, 128, 230);
+}
+
+.f-w-b {
+  font-weight: 700;
+}
+
+.f-w-l{
+  font-weight: 300;
+}
+
+
+.f-s-i {
+  font-style: italic;
+}
+
+$headings: (1, 2, 3, 4, 5, 6, 7, 8);
+
+@each $h in $headings {
+
+
+  .heading-#{$h} {
+
+    font-size: #{$h+0.7}rem;
+
+  }
+}
+
+
+$fonts: (1, 2, 3, 4, 5, 6, 7, 8);
+
+@each $f in $fonts {
+
+  .font-#{$f} {
+
+    font-size: #{$f}rem;
+
+  }
+
+}
+
+$lines: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $l in $lines {
+
+
+  .line-#{$l} {
+
+    line-height: #{$l/10}rem;
+
+  }
+
+
+}

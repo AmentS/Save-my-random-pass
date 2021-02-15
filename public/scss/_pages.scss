@@ -1,0 +1,20 @@
+.check-box{
+  display:flex;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.check-box-small{
+  flex-basis: 46%;
+  text-align: left;
+  position: relative;
+
+}
+
+.settings{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}

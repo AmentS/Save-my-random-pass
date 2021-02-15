@@ -1,0 +1,279 @@
+/*margins*/
+
+$margins: (10, 20, 30, 40, 50, 60);
+
+@each $m in $margins {
+
+  .margin-t-#{$m} {
+    margin-top: #{$m}rem;
+  }
+
+}
+
+$margins: (11, 12, 13, 14, 15, 16);
+
+@each $m in $margins {
+
+  .margin-t-#{$m} {
+    margin-top: #{$m}rem;
+  }
+
+}
+
+
+$margins: (10, 20, 30, 40, 50, 60);
+
+@each $m in $margins {
+
+  .margin-b-#{$m} {
+    margin-bottom: #{$m}rem;
+  }
+
+}
+
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+@each $m in $margins {
+
+  .margin-tb-#{$m} {
+    margin: #{$m}rem 0;
+  }
+
+}
+
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .margin-t-#{$m} {
+    margin-top: #{$m}rem;
+  }
+
+}
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .margin-b-#{$m} {
+    margin-bottom: #{$m}rem;
+  }
+
+}
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .margin-l-#{$m} {
+    margin-left: #{$m}rem;
+  }
+
+}
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .margin-r-#{$m} {
+    margin-right: #{$m}rem;
+  }
+
+}
+
+/*paddings*/
+
+$margins: (10, 20, 30, 40, 50, 60);
+
+@each $m in $margins {
+
+  .padding-t-#{$m} {
+    padding-top: #{$m}rem;
+  }
+
+}
+
+
+$margins: (10, 20, 30, 40, 50, 60);
+
+@each $m in $margins {
+
+  .padding-b-#{$m} {
+    padding-bottom: #{$m}rem;
+  }
+
+}
+
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+@each $m in $margins {
+
+  .padding-tb-#{$m} {
+    padding: #{$m}rem 0;
+  }
+
+}
+
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .padding-t-#{$m} {
+    padding-top: #{$m}rem;
+  }
+
+}
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .padding-b-#{$m} {
+    padding-bottom: #{$m}rem;
+  }
+
+}
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .padding-lr-#{$m} {
+    padding: 0 #{$m}rem;
+  }
+
+}
+
+/*aligne*/
+
+.al-center {
+  display: flex;
+  align-items: center
+}
+
+/*text align*/
+.al-text-c{
+  text-align: center;
+}
+
+.al-text-l{
+  text-align: left;
+}
+
+.al-text-r{
+  text-align: right;
+}
+
+
+/*justify*/
+
+.jc-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+.jc-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+/*borders*/
+
+.border-r {
+  border: 1px solid red;
+}
+
+.border-b {
+  border: 1px solid black;
+}
+
+.border-g {
+  border: 1px solid green;
+}
+
+.border-bl {
+  border: 1px solid blue;
+}
+
+
+/*index*/
+
+$margins: (1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+@each $m in $margins {
+
+  .z-index-#{$m} {
+    z-index: #{$m};
+  }
+
+}
+
+/*containers*/
+
+.wrap {
+  margin-left: auto;
+  margin-right: auto;
+  width: 137rem;
+  height: max-content;
+  position: relative;
+}
+.wrap-fix{
+  width: 100%;
+  position: fixed;
+}
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  width: 100%;
+  position: relative;
+
+}
+
+.container-1 {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.container-1-box {
+  display: flex;
+  width: 100%;
+  flex-basis: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.container-2 {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  justify-content: space-between;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: max-content;
+}
+
+.container-2-box {
+  flex-basis: 50%;
+  text-align: left;
+  position: relative;
+}

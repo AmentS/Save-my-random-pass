@@ -1,0 +1,29 @@
+@import "pages";
+@import "font&colors";
+@import "config";
+@import "utilities";
+@import "inputs&buttons";
+
+header{
+  height: 10rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+
+footer{
+  height: 10rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+
+
+
+@import "mobile";
