@@ -6,7 +6,8 @@ const number = document.getElementById('numbers');
 const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
-const website = document.getElementById('web-site');
+const website = document.getElementById('web-site').value;
+
 
 const randomFunct = {
     lower: getRandomLower,
@@ -59,7 +60,6 @@ function generatePassword(lower, upper, num, symbol, len) {
     const finalPassword = generatedPass.slice(0, len); //odje kidamo passvord od pocetka pa do len, tj duzine koju smo unijeli
     return finalPassword;
 
-
 }
 
 //Copy password to clipboard
@@ -98,3 +98,44 @@ function getRandomSymbol() {
     const symbols = '!@#$%^&*()_+';
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
+
+//save to database w/AJAX
+
+document.getElementById('save').addEventListener('click', ()=>{
+    var webName = website;
+    if(webName ===''){
+        error();
+        return;
+    }
+
+
+    var pass = generatePassword();
+
+})
+
+function error(){
+    const div = document.createElement('div');
+    div.className = `errorClass`;
+    div.appendChild(document.createTextNode('Please fill the website field'));
+    const container = document.querySelector('.container-2-box');
+    const label = document.querySelector('#label');
+    container.insertBefore(div, label);//da ubacimo div prije lable-a
+    //vanish in 3 sec
+    setTimeout(() => document.querySelector('.errorClass').remove(), 2000)
+}
+
+/*
+document.getElementById('save').addEventListener('onc', (e) =>{
+    e.preventDefault();
+    var name = document.getElementById('name2').value;
+    var pram = 'name='+ name;
+    var xhr = new XMLHttpRequest();
+    var res = document.getElementById('res1');
+    xhr.open('POST', 'process.php?', true);
+    xhr.setRequestHeader('Content-type', 'Application/x-www-form-urlencoded');
+    xhr.onload = function (){
+        res.innerText = this.responseText;
+    }
+    xhr.send(pram);
+})
+*/

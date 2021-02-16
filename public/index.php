@@ -14,7 +14,7 @@ require_once './dbConn.php';
         <div class="container-2-box">
             <p style="text-align: center;" class="heading-2 margin-b-3">Dashboard</p>
 
-            <label for="" class="heading-1">Enter website name</label>
+            <label for="" class="heading-1" id="label">Enter website name</label>
             <input type="text" id="web-site" class="input-t">
 
             <input type="text" id="result" class="input-t margin-t-1"
@@ -56,9 +56,8 @@ require_once './dbConn.php';
 
             </div>
             <div class="settings">
-                <button class="btn" id="generate">Save to database</button>
+                <button class="btn" id="save">Save to database</button>
             </div>
-
 
 
         </div>
