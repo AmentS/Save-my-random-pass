@@ -807,14 +807,29 @@ html h3 {
   width: 100%;
   height: 5rem;
   cursor: pointer;
-  background-color: lightgrey;
-  border: none;
+  background-color: white;
   outline: none;
   border-radius: 5px;
   transition: 0.3s ease-in-out;
+  border: 1px solid #2780e6;
+  color: black;
 }
 .btn:hover {
-  background-color: dimgray;
+  background-color: #2780e6;
+  color: white;
+}
+
+.copy {
+  font-size: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.copy:hover {
+  color: #2780e6;
+}
+
+input[type=checkbox] {
+  cursor: pointer;
 }
 
 header {
