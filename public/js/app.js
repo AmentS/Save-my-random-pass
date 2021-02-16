@@ -104,11 +104,20 @@ document.getElementById('save').addEventListener('click', () => {
     } else if (pass === '' && webName !== '') {
         error('pass');
         return;
-    } else if(webName === '' && pass === ''){
+    } else if (webName === '' && pass === '') {
         error();
         return;
     }
-    console.log(webName + ' | ' + pass)
+
+    var pram = `name=${webName}&pass=${pass}`;
+    var xhr = new XMLHttpRequest();
+    var res = document.getElementById('res');
+    xhr.open('POST', 'pass_save_read.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        res.innerText = this.responseText;
+    }
+    xhr.send(pram);
 
 })
 
@@ -116,11 +125,11 @@ function error(msg) {
     const div = document.createElement('div');
     div.className = `errorClass`;
     const p = document.createElement('p');
-    if(msg === 'webName'){
+    if (msg === 'webName') {
         p.appendChild(document.createTextNode('Please enter website name'));
-    }else if(msg === 'pass'){
+    } else if (msg === 'pass') {
         p.appendChild(document.createTextNode('Please generate password'));
-    }else{
+    } else {
         p.appendChild(document.createTextNode('Please enter website name and generate password'));
     }
     div.appendChild(p);
@@ -130,18 +139,24 @@ function error(msg) {
     setTimeout(() => document.querySelector('.errorClass').remove(), 2000)
 }
 
+//reading
+//ovo za sad radi
 /*
-document.getElementById('save').addEventListener('onc', (e) =>{
-    e.preventDefault();
-    var name = document.getElementById('name2').value;
-    var pram = 'name='+ name;
+document.addEventListener('DOMContentLoaded', ()=>{
     var xhr = new XMLHttpRequest();
-    var res = document.getElementById('res1');
-    xhr.open('POST', 'process.php?', true);
-    xhr.setRequestHeader('Content-type', 'Application/x-www-form-urlencoded');
-    xhr.onload = function (){
-        res.innerText = this.responseText;
+    xhr.open('GET', 'pass_save_read.php', true);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            var passwords = JSON.parse(this.responseText);
+            document.getElementById('res').style.border = '1px solid grey';
+            var output = '';
+            for (var i in passwords) {
+                output += `<div style="margin: 2px 2px; background-color: lightgrey"> ${passwords[i].webname} : ${passwords[i].pass}</div>`;
+            }
+
+            document.getElementById('res').innerHTML = output;
+        }
     }
-    xhr.send(pram);
-})
-*/
+
+    xhr.send();
+})*/

@@ -3,6 +3,7 @@ require_once './dbConn.php';
 /** @var $pdo \PDO */
 
 
+
 ?>
 
 
@@ -63,7 +64,10 @@ require_once './dbConn.php';
         </div>
 
     </div>
+    <div><p id="res" style="font-size: 5rem"></p></div>
 </div>
+
+
 
 
 <?php include './partials/footer.php' ?>
