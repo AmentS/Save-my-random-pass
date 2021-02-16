@@ -65,7 +65,7 @@ function generatePassword(lower, upper, num, symbol, len) {
 //Copy password to clipboard
 clipBoard.addEventListener('click', () => {
     const textArea = document.createElement('textarea');
-    const password = result.innerText; //sa innerText-om mozemo uzeti iz polja am ozemo i staviti
+    const password = result.value; //sa innerText-om mozemo uzeti iz polja am ozemo i staviti
 
     if (!password) {
         return;

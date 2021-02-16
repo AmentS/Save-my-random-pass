@@ -18,6 +18,7 @@
                 <input type="text" id="result" class="input-t margin-t-1"
                        placeholder="Generated password"
                        disabled>
+            <a style="font-size: 10px; cursor: pointer" id="clipboard">copy</a>
 
                 <div class="check-box">
                     <div class="check-box-small">
