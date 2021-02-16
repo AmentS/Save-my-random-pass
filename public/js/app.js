@@ -6,7 +6,7 @@ const number = document.getElementById('numbers');
 const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
-
+const website = document.getElementById('web-site');
 
 const randomFunct = {
     lower: getRandomLower,
