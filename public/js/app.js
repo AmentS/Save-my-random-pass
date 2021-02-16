@@ -6,7 +6,6 @@ const number = document.getElementById('numbers');
 const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
-const website = document.getElementById('web-site').value;
 
 
 const randomFunct = {
@@ -33,13 +32,9 @@ function generatePassword(lower, upper, num, symbol, len) {
     let generatedPass = '';
     const typesCount = lower + upper + num + symbol;
 
-    console.log('Count checked: ', typesCount); // gledamo koliko smo chekovali boksova
-
     const typeArr = [{lower}, {upper}, {num}, {symbol}] // zelimo objekte a lower upper num i sum zelimo kao kljuceve
         .filter(item => Object.values(item)[0]); //zato cemo njih staviti izmedju {}
 
-
-    console.log(typeArr);
 
     if (typesCount === 0) {
         return '';
@@ -50,7 +45,6 @@ function generatePassword(lower, upper, num, symbol, len) {
         typeArr.forEach(type => {
             const functName = Object.keys(type)[0]; //ovo pretvara u kljuceve da bi te kljuceve mogli da iskoristimo u randomFunck
                                                     //kao njene kljuceve
-            console.log(functName);
             generatedPass += randomFunct[functName]();
 
         })
@@ -101,26 +95,38 @@ function getRandomSymbol() {
 
 //save to database w/AJAX
 
-document.getElementById('save').addEventListener('click', ()=>{
-    var webName = website;
-    if(webName ===''){
+document.getElementById('save').addEventListener('click', () => {
+    var webName = document.getElementById('web-site').value;
+    var pass = result.value;
+    if (webName === '' && pass !== '') {
+        error('webName');
+        return;
+    } else if (pass === '' && webName !== '') {
+        error('pass');
+        return;
+    } else if(webName === '' && pass === ''){
         error();
         return;
     }
-
-
-    var pass = generatePassword();
+    console.log(webName + ' | ' + pass)
 
 })
 
-function error(){
+function error(msg) {
     const div = document.createElement('div');
     div.className = `errorClass`;
-    div.appendChild(document.createTextNode('Please fill the website field'));
+    const p = document.createElement('p');
+    if(msg === 'webName'){
+        p.appendChild(document.createTextNode('Please enter website name'));
+    }else if(msg === 'pass'){
+        p.appendChild(document.createTextNode('Please generate password'));
+    }else{
+        p.appendChild(document.createTextNode('Please enter website name and generate password'));
+    }
+    div.appendChild(p);
     const container = document.querySelector('.container-2-box');
     const label = document.querySelector('#label');
     container.insertBefore(div, label);//da ubacimo div prije lable-a
-    //vanish in 3 sec
     setTimeout(() => document.querySelector('.errorClass').remove(), 2000)
 }
 
