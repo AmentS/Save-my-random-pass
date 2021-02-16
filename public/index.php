@@ -11,12 +11,12 @@
     <div class="container">
         <div class="container-2-box">
             <p style="text-align: center;" class="heading-2 margin-b-3">Dashboard</p>
-            <form action="">
+
                 <label for="" class="heading-1">Enter website name</label>
                 <input type="text" id="web-site" class="input-t">
 
                 <input type="text" id="result" class="input-t margin-t-1"
-                       placeholder="Here will the password appear"
+                       placeholder="Generated password"
                        disabled>
 
                 <div class="check-box">
@@ -49,7 +49,7 @@
 
 
                 </div>
-            </form>
+
         </div>
 
     </div>
