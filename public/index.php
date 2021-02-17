@@ -1,11 +1,5 @@
 <?php
 require_once './dbConn.php';
-/** @var $pdo \PDO */
-
-$statment = $pdo->prepare('select * from web_save');
-
-$statment->execute();
-$passwords = $statment->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -84,7 +78,6 @@ $passwords = $statment->fetchAll(PDO::FETCH_ASSOC);
 
         }
     });
-
 
 
 </script>

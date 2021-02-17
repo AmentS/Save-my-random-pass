@@ -150,13 +150,18 @@ function instantLoad() {
     xhr.onload = function () {
         if (this.status === 200) {
             var passwords = JSON.parse(this.responseText);
-            //document.getElementById('res').style.border = '1px solid grey';
+
             var output = '';
             for (var i in passwords) {
-                output += `<div style="margin: 2px 2px; background-color: lightgrey"> ${passwords[i].webname} : ${passwords[i].pass}</div>`;
+                output += `<div class="content">
+                                 <input type="text" value="${passwords[i].webname}" id="updateWeb" style="margin-left: 1rem"  disabled>
+                                 <input type="text" value="${passwords[i].pass}" id="passUpdate">
+                                 <button class="btn-update" id="update" style="margin-right: 1rem" onclick="updatePass(${passwords[i].webname}, ${passwords[i].pass})">Update</button>
+                           </div>`;
             }
 
-            document.getElementById('testiranje').innerHTML = output;
+
+            document.getElementById('hidden').innerHTML = output;
         }
     }
 
@@ -174,9 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
             var output = '';
             for (var i in passwords) {
                 output += `<div class="content">
-                                 <input type="text" value="${passwords[i].webname}" style="margin-left: 1rem" disabled>
-                                 <input type="text" value="${passwords[i].pass}">
-                                 <button class="btn-update" id="save" style="margin-right: 1rem">Update</button>
+                                 <input type="text" value="${passwords[i].webname}" id="updateWeb" style="margin-left: 1rem"  disabled>
+                                 <input type="text" value="${passwords[i].pass}" id="passUpdate">
+                                 <button class="btn-update" id="update" style="margin-right: 1rem" onclick="updatePass('${passwords[i].webname}', '${passwords[i].pass}')">Update</button>
                            </div>`;
             }
 
@@ -187,3 +192,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     xhr.send();
 })
+
+/*document.getElementById('update').addEventListener('click', () => {
+    var webName = document.getElementById('updateWeb').value;
+    var pass = document.getElementById('passUpdate').value;
+    if (pass === '' && webName !== '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Password missing',
+            text: 'Please fill the password field',
+        });
+        return;
+    }
+
+    var pram = `name=${webName}&pass=${pass}`;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'update.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+
+        if (this.responseText === 'ok') {
+            swal("Successs", "Password successfully updated!", "success");
+            instantLoad();
+        }
+
+    }
+    xhr.send(pram);
+
+})*/
+
+
+
+function updatePass(web, pass) {
+
+    /*if (pass === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Password missing',
+            text: 'Please fill the password field',
+        })
+        return;
+    }*/
+
+    var pram = `name=${web}&pass=${pass}`;
+    var xhr = new XMLHttpRequest();
+    console.log(pram);
+    xhr.open('POST', 'update.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+
+        if (this.responseText === 'ok') {
+            swal("Successs", "Password successfully updated!", "success");
+            instantLoad();
+        }
+
+    }
+    xhr.send(pram);
+
+}
+
