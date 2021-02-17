@@ -70,5 +70,8 @@ require_once './dbConn.php';
 
 
 
+
+
 <?php include './partials/footer.php' ?>
 <script src="./js/app.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

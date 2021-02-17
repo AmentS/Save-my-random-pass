@@ -21,6 +21,7 @@ if (isset($_POST)) {
     $statment->bindValue(':webname',$webname);
     $statment->bindValue(':pass', $pass);
     $statment->execute();
+    exit('ok');
 
 
 }

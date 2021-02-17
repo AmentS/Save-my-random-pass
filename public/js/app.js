@@ -93,8 +93,8 @@ function getRandomSymbol() {
     return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-//save to database w/AJAX
 
+//save to database w/AJAX
 document.getElementById('save').addEventListener('click', () => {
     var webName = document.getElementById('web-site').value;
     var pass = result.value;
@@ -111,13 +111,17 @@ document.getElementById('save').addEventListener('click', () => {
 
     var pram = `name=${webName}&pass=${pass}`;
     var xhr = new XMLHttpRequest();
-    var res = document.getElementById('res');
     xhr.open('POST', 'pass_save_read.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
-        res.innerText = this.responseText;
+
+        if (this.responseText === 'ok') {
+            swal("Successs", "Password successfully added ", "success");
+        }
+
     }
     xhr.send(pram);
+
 
 })
 
@@ -142,7 +146,7 @@ function error(msg) {
 //reading
 //ovo za sad radi
 /*
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'pass_save_read.php', true);
     xhr.onload = function () {
@@ -159,4 +163,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
 
     xhr.send();
-})*/
+})
+*/
