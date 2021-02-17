@@ -116,7 +116,7 @@ document.getElementById('save').addEventListener('click', () => {
     xhr.onload = function () {
 
         if (this.responseText === 'ok') {
-            swal("Successs", "Password successfully added ", "success");
+            swal("Successs", "Password successfully added!", "success");
             instantLoad();
         }
 
@@ -143,7 +143,8 @@ function error(msg) {
     container.insertBefore(div, label);//da ubacimo div prije lable-a
     setTimeout(() => document.querySelector('.errorClass').remove(), 2000)
 }
-function instantLoad(){
+
+function instantLoad() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'fetch_pass.php', true);
     xhr.onload = function () {
@@ -169,13 +170,18 @@ document.addEventListener('DOMContentLoaded', () => {
     xhr.onload = function () {
         if (this.status === 200) {
             var passwords = JSON.parse(this.responseText);
-            //document.getElementById('res').style.border = '1px solid grey';
+
             var output = '';
             for (var i in passwords) {
-                output += `<div style="margin: 2px 2px; background-color: lightgrey"> ${passwords[i].webname} : ${passwords[i].pass}</div>`;
+                output += `<div class="content">
+                                 <input type="text" value="${passwords[i].webname}" style="margin-left: 1rem" disabled>
+                                 <input type="text" value="${passwords[i].pass}">
+                                 <button class="btn-update" id="save" style="margin-right: 1rem">Update</button>
+                           </div>`;
             }
 
-            document.getElementById('testiranje').innerHTML = output;
+
+            document.getElementById('hidden').innerHTML = output;
         }
     }
 

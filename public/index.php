@@ -53,28 +53,38 @@ $passwords = $statment->fetchAll(PDO::FETCH_ASSOC);
                         <input type="checkbox" id="symbols" checked/>
                     </div>
                     <button class="btn" id="generate">Generate password</button>
-
-
                 </div>
-
-
             </div>
             <div class="settings">
                 <button class="btn" id="save">Save to database</button>
             </div>
 
+            <div class="box-hidden">
+                <div class="show"><a class="allPass">Show saved passwords</a></div>
+                <div class="hidden" id="hidden">
+
+                </div>
+            </div>
 
         </div>
 
     </div>
-    <div id="testiranje" ></div>
 </div>
-
-
-
-
 
 
 <?php include './partials/footer.php' ?>
 <script src="./js/app.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    document.addEventListener('click', e => {
+
+        if (e.target.classList.contains('allPass')) {
+            const meni = document.querySelector(".hidden");
+            meni.classList.toggle("show");
+
+        }
+    });
+
+
+
+</script>
