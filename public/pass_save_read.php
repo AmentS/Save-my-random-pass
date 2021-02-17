@@ -3,12 +3,7 @@
 require_once './dbConn.php';
 /** @var $pdo \PDO */
 
-/*$statment = $pdo->prepare('select * from web_save');
 
-$statment->execute();
-$passwords = $statment->fetchAll(PDO::FETCH_ASSOC);
-
-echo json_encode($passwords);*/
 
 
 if (isset($_POST)) {
@@ -22,7 +17,6 @@ if (isset($_POST)) {
     $statment->bindValue(':pass', $pass);
     $statment->execute();
     exit('ok');
-
 
 }
 

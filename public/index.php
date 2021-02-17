@@ -2,7 +2,10 @@
 require_once './dbConn.php';
 /** @var $pdo \PDO */
 
+$statment = $pdo->prepare('select * from web_save');
 
+$statment->execute();
+$passwords = $statment->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -64,7 +67,7 @@ require_once './dbConn.php';
         </div>
 
     </div>
-    <div><p id="res" style="font-size: 5rem"></p></div>
+    <div id="testiranje" ></div>
 </div>
 
 

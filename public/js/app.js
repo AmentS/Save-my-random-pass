@@ -94,7 +94,7 @@ function getRandomSymbol() {
 }
 
 
-//save to database w/AJAX
+//save to database
 document.getElementById('save').addEventListener('click', () => {
     var webName = document.getElementById('web-site').value;
     var pass = result.value;
@@ -117,6 +117,7 @@ document.getElementById('save').addEventListener('click', () => {
 
         if (this.responseText === 'ok') {
             swal("Successs", "Password successfully added ", "success");
+            instantLoad();
         }
 
     }
@@ -142,26 +143,41 @@ function error(msg) {
     container.insertBefore(div, label);//da ubacimo div prije lable-a
     setTimeout(() => document.querySelector('.errorClass').remove(), 2000)
 }
-
-//reading
-//ovo za sad radi
-/*
-document.addEventListener('DOMContentLoaded', () => {
+function instantLoad(){
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'pass_save_read.php', true);
+    xhr.open('GET', 'fetch_pass.php', true);
     xhr.onload = function () {
         if (this.status === 200) {
             var passwords = JSON.parse(this.responseText);
-            document.getElementById('res').style.border = '1px solid grey';
+            //document.getElementById('res').style.border = '1px solid grey';
             var output = '';
             for (var i in passwords) {
                 output += `<div style="margin: 2px 2px; background-color: lightgrey"> ${passwords[i].webname} : ${passwords[i].pass}</div>`;
             }
 
-            document.getElementById('res').innerHTML = output;
+            document.getElementById('testiranje').innerHTML = output;
+        }
+    }
+
+    xhr.send();
+}
+
+//reading
+document.addEventListener('DOMContentLoaded', () => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'fetch_pass.php', true);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            var passwords = JSON.parse(this.responseText);
+            //document.getElementById('res').style.border = '1px solid grey';
+            var output = '';
+            for (var i in passwords) {
+                output += `<div style="margin: 2px 2px; background-color: lightgrey"> ${passwords[i].webname} : ${passwords[i].pass}</div>`;
+            }
+
+            document.getElementById('testiranje').innerHTML = output;
         }
     }
 
     xhr.send();
 })
-*/
