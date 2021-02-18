@@ -118,6 +118,8 @@ document.getElementById('save').addEventListener('click', () => {
 
         if (this.responseText === 'saved') {
             swal("Successs", "Password successfully added!", "success");
+            result.value = '';
+            document.getElementById('web-site').value = '';
             instantLoad();
         } else if (this.responseText === 'not_ok') {
             swal("Error", "Website is already saved", "error");
