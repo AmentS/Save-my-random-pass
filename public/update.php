@@ -8,10 +8,15 @@ if (isset($_POST)) {
     $webname = $_POST['name'];
     $pass = $_POST['pass'];
 
-    $statment = $pdo->prepare('UPDATE web_save SET pass=:pass WHERE webname=:webname');
-    $statment->bindValue(':webname', $webname);
-    $statment->bindValue(':pass', $pass);
-    $statment->execute();
-    exit('ok');
+    try {
+
+        $statment = $pdo->prepare('UPDATE web_save SET pass=:pass WHERE webname=:webname');
+        $statment->bindValue(':webname', $webname);
+        $statment->bindValue(':pass', $pass);
+        $statment->execute();
+        exit('password updated');
+    } catch (PDOException $e) {
+        exit('not_ok');
+    }
 
 }
