@@ -94,7 +94,6 @@ function getRandomSymbol() {
 }
 
 
-
 //save to database
 document.getElementById('save').addEventListener('click', () => {
     var webName = document.getElementById('web-site').value;
@@ -160,8 +159,9 @@ function instantLoad() {
             for (var i in passwords) {
                 output += `<div class="content">
                                  <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
-                                 <input type="text" value="${passwords[i].pass}" id="test">
-                                 <button class="btn-update" style="margin-right: 1rem" onclick="updatePass(${passwords[i].webname}, ${passwords[i].pass})">Update</button>
+                                 <input type="text" value="${passwords[i].pass}" id="${passwords[i].id}">
+                                 <button class="btn-update" style="margin-right: 1rem" 
+                                    onclick="updatePass(${passwords[i].webname}, ${passwords[i].pass})">Update</button>
                            </div>`;
             }
 
@@ -176,32 +176,32 @@ function instantLoad() {
 //reading
 document.addEventListener('DOMContentLoaded', instantLoad());
 
-/*
-function updatePass(web, pass) {
+function updatePass(id, pass) {
 
-    /!*if (pass === '') {
+  /*  if (pass === '') {
         Swal.fire({
             icon: 'error',
             title: 'Password missing',
             text: 'Please fill the password field',
         })
         return;
-    }*!/
+    }*/
+
 
     var pram = `name=${web}&pass=${pass}`;
     var xhr = new XMLHttpRequest();
     console.log(pram);
- /!*   xhr.open('POST', 'update.php', true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
+      xhr.open('POST', 'update.php', true);
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.onload = function () {
 
-        if (this.responseText === 'password updated') {
-            swal("Successs", "Password successfully updated!", "success");
-            instantLoad();
-        }
+          if (this.responseText === 'password updated') {
+              swal("Successs", "Password successfully updated!", "success");
+              instantLoad();
+          }
 
-    }
-    xhr.send(pram);*!/
+      }
+      xhr.send(pram);
 
-}*/
+}
 

@@ -47,19 +47,17 @@
   transition: 0.3s ease-in-out;
 }
 
-.hidden {
+/*.hidden{
   width: 100%;
   height: 0;
   display: block;
   transition: 0.3s ease-in-out;
   overflow: hidden;
 }
-
-.hidden.show {
+.hidden.show{
   transition: 0.3s ease-in-out;
   height: max-content;
-}
-
+}*/
 .content {
   border-bottom: 1px solid #2780e6;
   height: 6rem;
