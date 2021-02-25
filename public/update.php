@@ -5,16 +5,16 @@ require_once './dbConn.php';
 
 if (isset($_POST)) {
 
-    $id = $_POST['id'];
+    $webname = $_POST['name'];
     $pass = $_POST['pass'];
 
     try {
 
-        $statment = $pdo->prepare('UPDATE web_save SET pass=:pass WHERE id=:id');
-        $statment->bindValue(':id', $id);
+        $statment = $pdo->prepare('UPDATE web_save SET pass=:pass WHERE webname=:webname');
+        $statment->bindValue(':webname', $webname);
         $statment->bindValue(':pass', $pass);
         $statment->execute();
-        exit('password updated');
+        exit('updated');
     } catch (PDOException $e) {
         exit('not_ok');
     }

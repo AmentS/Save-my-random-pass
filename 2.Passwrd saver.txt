@@ -1,0 +1,8 @@
+- create password random + 
+- za sta je password +
+- cuvanje passworda u bazi +
+- citanje pasvorda iz baze + 
+- export pasworda u json-fajlu (php i js) +
+- log -
+- errors +
+- srediti bag prilikom update - 

@@ -159,13 +159,14 @@ function instantLoad() {
             for (var i in passwords) {
                 outputJSON.push(passwords[i]);
                 output += `<div class="content">
-                                 <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
-                                 <input type="text" value="${passwords[i].pass}" id="${passwords[i].id}">
+                                <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
+                                 <input type="text" value="${passwords[i].pass}" id="newPass">
                                  <button class="btn-update" style="margin-right: 1rem" 
-                                    onclick="updatePass(${passwords[i].webname}, ${passwords[i].pass})">Update</button>
+                                    onclick="updatePass('${passwords[i].webname}', '${passwords[i].pass}')">Update</button>
                            </div>`;
             }
-
+            /* <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
+                 <input type="text" value="${passwords[i].pass}" id="${passwords[i].id}">*/
 
             document.getElementById('hidden').innerHTML = output;
         }
@@ -178,26 +179,19 @@ function instantLoad() {
 document.addEventListener('DOMContentLoaded', instantLoad());
 
 
-function updatePass(id, pass) {
+function updatePass(web, pass) {
+    var newPass = document.getElementById('newPass').value;
+    if (newPass === '') {
+        swal("Error", "Password is missing", "error");
+        return;
+    }
+    var pram = `name=${web}&pass=${newPass}`;
 
-    /*  if (pass === '') {
-          Swal.fire({
-              icon: 'error',
-              title: 'Password missing',
-              text: 'Please fill the password field',
-          })
-          return;
-      }*/
-
-
-    var pram = `name=${web}&pass=${pass}`;
     var xhr = new XMLHttpRequest();
-    console.log(pram);
     xhr.open('POST', 'update.php', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
-
-        if (this.responseText === 'password updated') {
+        if (this.responseText === 'updated') {
             swal("Successs", "Password successfully updated!", "success");
             instantLoad();
         }
