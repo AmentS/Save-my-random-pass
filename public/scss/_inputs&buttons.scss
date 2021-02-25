@@ -44,11 +44,11 @@
   }
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
   cursor: pointer;
 }
 
-.btn-update{
+.btn-update {
 
   width: 10rem;
   height: 4rem;
@@ -65,4 +65,80 @@ input[type=checkbox]{
     color: white;
   }
 
+}
+
+.file-name-input {
+  padding-left: 1rem;
+  height: 4rem;
+  margin: 1rem 1rem;
+  outline: none;
+
+  input[type='text'] {
+    border-radius: 5px;
+    height: 4rem;
+    padding-left: 1rem;
+    border: 1px solid red;
+
+  }
+
+  input[type=text]:focus {
+    border: 1px solid rgb(39, 128, 230);
+    outline: none;
+  }
+}
+
+.js-btn {
+  width: 20rem;
+  height: 4rem;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgb(39, 128, 230);
+  color: black;
+  margin: 1rem 1rem;
+
+  &:hover {
+    border: 1px solid rgb(39, 128, 230);
+    color: rgb(39, 128, 230);
+  }
+}
+
+.php-btn {
+  width: 20rem;
+  height: 4rem;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgb(39, 128, 230);
+  color: black;
+  margin: 1rem 1rem;
+
+  &:hover {
+
+    border: 1px solid rgb(0, 128, 0);
+    color: rgb(0, 128, 0);
+  }
+}
+
+.cancel-btn {
+  width: 20rem;
+  height: 4rem;
+  cursor: pointer;
+  background-color: white;
+  outline: none;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+  border: 1px solid rgb(39, 128, 230);
+  color: black;
+  margin: 1rem 1rem;
+
+  &:hover {
+
+    border: 1px solid rgb(255,0,0);
+    color: rgb(255,0,0);
+  }
 }

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./../css/style.css">
     <link rel="shortcut icon" href="#">
+    <script src="./../js/app.js" defer></script>
     <title>Password saver | AmentS</title>
 </head>
 <body>

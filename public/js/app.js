@@ -6,7 +6,7 @@ const number = document.getElementById('numbers');
 const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
-
+var outputJSON = [];
 
 const randomFunct = {
     lower: getRandomLower,
@@ -157,6 +157,7 @@ function instantLoad() {
 
             var output = '';
             for (var i in passwords) {
+                outputJSON.push(passwords[i]);
                 output += `<div class="content">
                                  <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
                                  <input type="text" value="${passwords[i].pass}" id="${passwords[i].id}">
@@ -176,32 +177,116 @@ function instantLoad() {
 //reading
 document.addEventListener('DOMContentLoaded', instantLoad());
 
+
 function updatePass(id, pass) {
 
-  /*  if (pass === '') {
-        Swal.fire({
-            icon: 'error',
-            title: 'Password missing',
-            text: 'Please fill the password field',
-        })
-        return;
-    }*/
+    /*  if (pass === '') {
+          Swal.fire({
+              icon: 'error',
+              title: 'Password missing',
+              text: 'Please fill the password field',
+          })
+          return;
+      }*/
 
 
     var pram = `name=${web}&pass=${pass}`;
     var xhr = new XMLHttpRequest();
     console.log(pram);
-      xhr.open('POST', 'update.php', true);
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhr.onload = function () {
+    xhr.open('POST', 'update.php', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
 
-          if (this.responseText === 'password updated') {
-              swal("Successs", "Password successfully updated!", "success");
-              instantLoad();
-          }
+        if (this.responseText === 'password updated') {
+            swal("Successs", "Password successfully updated!", "success");
+            instantLoad();
+        }
 
-      }
-      xhr.send(pram);
+    }
+    xhr.send(pram);
 
 }
 
+/*EXPORTS*/
+
+/*js*/
+
+
+var modalBtn = document.getElementById('modalExport');
+var modalBg = document.querySelector('.modal-bg');
+var cancelBtn = document.getElementById('cancel');
+var exportJsBtn = document.getElementById('expJs');
+var exportPhpBtn = document.getElementById('expPhp');
+
+modalBtn.addEventListener('click', () => {
+    modalBg.classList.add('bg-active');
+})
+cancelBtn.addEventListener('click', () => {
+    modalBg.classList.remove('bg-active');
+    document.getElementById('fileName').style.border = "1px solid gray";
+    document.getElementById('fileName').value = '';
+
+})
+
+function exportJasonJs() {
+    var data = document.getElementById('fileName').value;
+    if (data === '') {
+
+        document.getElementById('fileName').style.border = "1px solid red";
+    } else {
+
+
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([JSON.stringify(outputJSON, null, 2)], {
+            type: "text/plain"
+        }));
+        a.setAttribute("download", data);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        document.getElementById('fileName').value = '';
+        document.getElementById('fileName').style.border = "1px solid gray";
+        swal("Successs", "File created!", "success");
+
+    }
+}
+
+exportJsBtn.addEventListener('click', exportJasonJs);
+
+/*php*/
+function exportJsonPhp() {
+    var str = '';
+    var fileName = document.getElementById('fileName').value;
+    if (fileName === '') {
+
+        document.getElementById('fileName').style.border = "1px solid red";
+    } else {
+
+        for (i in outputJSON) {
+
+            str += `${i + 1}: ${outputJSON[i].webname}\n`
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'export.php', true);
+        const test = 'stressTest';
+        var pram = `data=${str}&fileName=${fileName}`;
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            if (this.responseText === 'exported') {
+                swal("Successs", "Password successfully added!", "success");
+                document.getElementById('fileName').value = '';
+                document.getElementById('fileName').style.border = "1px solid gray";
+            } else if (this.responseText === 'not_ok') {
+                swal("Error", "Website is already saved", "error");
+                document.getElementById('fileName').value = '';
+                document.getElementById('fileName').style.border = "1px solid gray";
+            }
+
+        }
+        xhr.send(pram);
+    }
+
+}
+
+exportPhpBtn.addEventListener('click', exportJsonPhp);

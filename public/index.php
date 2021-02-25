@@ -52,7 +52,10 @@ require_once './dbConn.php';
             <div class="settings">
                 <button class="btn" id="save">Save to database</button>
             </div>
+            <div class="box-hidden">
+                <div class="export"><a class="export" id="modalExport">Export to JSON</a></div>
 
+            </div>
             <div class="box-hidden">
                 <div class="show"><a class="allPass">Show saved passwords</a></div>
                 <div class="hidden" id="hidden">
@@ -65,9 +68,18 @@ require_once './dbConn.php';
     </div>
 </div>
 
+<div class="modal-bg">
+    <div class="modal">
+        <input type="text" placeholder="File name..." id="fileName" class="file-name-input">
+        <button id="expJs" class="js-btn">Export from JS</button>
+        <button id="expPhp" class="php-btn">Export from PhP</button>
+        <button id="cancel" class="cancel-btn">Cancel</button>
+    </div>
+</div>
+
 
 <?php include './partials/footer.php' ?>
-<script src="./js/app.js"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     document.addEventListener('click', e => {
@@ -78,6 +90,8 @@ require_once './dbConn.php';
 
         }
     });
+
+
 
 
 </script>
