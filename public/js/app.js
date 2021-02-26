@@ -7,6 +7,7 @@ const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
 var outputJSON = [];
+var filled =0;
 
 const randomFunct = {
     lower: getRandomLower,
@@ -157,6 +158,7 @@ function instantLoad() {
 
             var output = '';
             for (var i in passwords) {
+                filled++;
                 outputJSON.push(passwords[i]);
                 output += `<div class="content">
                                 <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
@@ -286,6 +288,35 @@ function exportJsonPhp() {
 exportPhpBtn.addEventListener('click', exportJsonPhp);
 
 //CANVAS
+
+function getFilled(){
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'fetch_pass.php', true);
+    xhr.onload = function () {
+        if (this.status === 200) {
+            var passwords = JSON.parse(this.responseText);
+
+            var output = '';
+            for (var i in passwords) {
+                outputJSON.push(passwords[i]);
+                output += `<div class="content">
+                                <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
+                                 <input type="text" value="${passwords[i].pass}" id="newPass">
+                                 <button class="btn-update" style="margin-right: 1rem" 
+                                    onclick="updatePass('${passwords[i].webname}', '${passwords[i].pass}')">Update</button>
+                           </div>`;
+            }
+            /* <input type="text" value="${passwords[i].webname}"  style="margin-left: 1rem"  disabled>
+                 <input type="text" value="${passwords[i].pass}" id="${passwords[i].id}">*/
+
+            document.getElementById('hidden').innerHTML = output;
+        }
+    }
+
+    xhr.send();
+
+}
+
 window.onload = function () {
     var can = document.getElementById('canvas'),
         spanProcent = document.getElementById('procent'),
@@ -296,7 +327,7 @@ window.onload = function () {
         fps = 1000 / 200,
         procent = 0,
         oneProcent = 360 / 100,
-        result = oneProcent * 25;
+        result = oneProcent * filled;
 
     c.lineCap = 'round';
     arcMove();
