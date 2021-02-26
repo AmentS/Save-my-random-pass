@@ -66,6 +66,13 @@ require_once './dbConn.php';
         </div>
 
     </div>
+
+</div>
+<div class="canvas-wrap">
+    <canvas id="canvas" width="300" height="300"></canvas>
+    <span id="procent"></span>
+    <p class="color-b heading-2">How much u have filled</p>
+
 </div>
 
 <div class="modal-bg">
