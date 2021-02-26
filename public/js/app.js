@@ -7,7 +7,7 @@ const symbols = document.getElementById('symbols');
 const generate = document.getElementById('generate');
 const clipBoard = document.getElementById('clipboard');
 var outputJSON = [];
-var filled =0;
+var filled = 0;
 
 const randomFunct = {
     lower: getRandomLower,
@@ -175,6 +175,7 @@ function instantLoad() {
     }
 
     xhr.send();
+
 }
 
 //reading
@@ -289,7 +290,7 @@ exportPhpBtn.addEventListener('click', exportJsonPhp);
 
 //CANVAS
 
-function getFilled(){
+function getFilled() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'fetch_pass.php', true);
     xhr.onload = function () {
@@ -317,7 +318,7 @@ function getFilled(){
 
 }
 
-window.onload = function () {
+window.onload = function() {
     var can = document.getElementById('canvas'),
         spanProcent = document.getElementById('procent'),
         c = can.getContext('2d');
@@ -359,3 +360,6 @@ window.onload = function () {
 
 
 }
+
+
+
